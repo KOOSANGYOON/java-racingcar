@@ -1,5 +1,6 @@
 package car;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
@@ -12,7 +13,7 @@ public class RacingCar {
 	public static String[] splitName(String carName) {
 		return carName.split(" ");
 	}
-	public static void startRace(ArrayList<Car> cars) {
+	public static void startRace(List<Car> cars) {
 		ArrayList<Integer> carLocation = new ArrayList<Integer> (cars.size());
 		for (int i = 0; i < cars.size(); i++) {
 			Random randomNum = new Random();

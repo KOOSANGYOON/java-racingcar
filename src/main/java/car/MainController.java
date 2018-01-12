@@ -3,6 +3,7 @@ package car;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import spark.ModelAndView;
@@ -12,7 +13,7 @@ import static spark.Spark.*;
 
 public class MainController {
 	public static void main(String[] args) {
-		ArrayList<Car> cars = new ArrayList<Car>();
+		List<Car> cars = new ArrayList<Car>();
 		port(8080);
 		
 		get("/", (req, res) -> {
@@ -21,7 +22,7 @@ public class MainController {
 		
 		post("/name", (req, res) -> {
 			String inputName = req.queryParams("names");
-			ArrayList<String> carNameList = new ArrayList<String>(Arrays.asList(RacingCar.splitName(inputName)));
+			List<String> carNameList = new ArrayList<String>(Arrays.asList(RacingCar.splitName(inputName)));
 			for (String name : carNameList) {
 				cars.add(new Car(name));
 			}
@@ -40,8 +41,6 @@ public class MainController {
 			Map<String, Object> model = new HashMap<>();
 			model.put("cars", cars);
 			return render(model, "result.html");
-//			int biggest = RacingCar.findBiggest(carStatus);
-//			ResultView.printWinner(biggest, cars);
 		});
 	}
 	
